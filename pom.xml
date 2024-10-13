@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <prerequisites>
@@ -11,39 +11,46 @@
     <groupId>it.yobibit</groupId>
     <artifactId>jaxb-lombok-plugin</artifactId>
     <version>1.0.0</version>
-         
+
     <distributionManagement>
-         <repository>
-             <id>github</id>
-             <name>GitHub svzdvd Apache Maven Packages</name>
-             <url>https://maven.pkg.github.com/svzdvd/jaxb-lombok-plugin</url>
-         </repository>
+        <repository>
+            <id>github</id>
+            <name>GitHub svzdvd Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/svzdvd/jaxb-lombok-plugin</url>
+        </repository>
     </distributionManagement>
-         
+
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>21</source>
+                    <target>21</target>
                 </configuration>
             </plugin>
         </plugins>
     </build>
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/com.sun.xml.bind/jaxb-xjc -->
         <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-xjc</artifactId>
+            <version>4.0.5</version>
+        </dependency>
+
+        <!-- <dependency>
             <groupId>com.sun.xml.bind</groupId>
             <artifactId>jaxb-xjc</artifactId>
             <version>2.2.11</version>
             <scope>provided</scope>
-        </dependency>
+        </dependency> -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.16.18</version>
+            <version>1.18.34</version>
         </dependency>
         <!-- Test dependencies -->
         <dependency>
@@ -83,7 +90,8 @@
                                     <!-- Package name -->
                                     <packageName>it.yobibit.jaxb.test.jaxws</packageName>
                                     <!-- generated source files destination-->
-                                    <sourceDestDir>${project.build.directory}/generated-test-sources/jaxws</sourceDestDir>
+                                    <sourceDestDir>
+                                        ${project.build.directory}/generated-test-sources/jaxws</sourceDestDir>
                                 </configuration>
                             </execution>
                         </executions>
@@ -103,7 +111,8 @@
                             <execution>
                                 <phase>generate-test-sources</phase>
                                 <configuration>
-                                    <sourceRoot>${project.build.directory}/generated-test-sources/cxf</sourceRoot>
+                                    <sourceRoot>
+                                        ${project.build.directory}/generated-test-sources/cxf</sourceRoot>
                                     <wsdlOptions>
                                         <wsdlOption>
                                             <wsdl>${basedir}/src/test/resources/test.wsdl</wsdl>
